@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="softwareinclude.ro.portforwardandroid" >
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_MULTICAST_STATE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
@@ -12,15 +15,16 @@
         <activity
             android:name=".GUI.MainActivity"
             android:label="@string/app_name"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
         <receiver
-            android:name="softwareinclude.ro.portforwardandroid.broadcastStatus.NetworkStatus"
+            android:name=".broadcastStatus.NetworkStatus"
             android:label="NetworkStatus" >
             <intent-filter>
                 <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
@@ -28,6 +32,11 @@
             </intent-filter>
         </receiver>
 
+        <activity
+            android:name=".GUI.AddPortActivity"
+            android:label="@string/title_activity_add_port"
+            android:screenOrientation="portrait">
+        </activity>
     </application>
 
 </manifest>

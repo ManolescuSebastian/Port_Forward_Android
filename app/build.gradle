@@ -21,4 +21,6 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile files('libs/sbbi-upnplib-1.0.3.jar')
+    compile files('libs/upnplib-mobile.jar')
 }

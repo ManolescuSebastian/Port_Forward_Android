@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.widget.Toast;
 
 import softwareinclude.ro.portforwardandroid.util.GlobalData;
-import softwareinclude.ro.portforwardandroid.util.NetworkUtil;
+import softwareinclude.ro.portforwardandroid.network.NetworkUtil;
 
 /**
  * Created by manolescusebastian on 8/3/14.

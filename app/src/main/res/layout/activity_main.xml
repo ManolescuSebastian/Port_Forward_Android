@@ -35,6 +35,14 @@
             android:text="IGD Name: None"
             />
 
+        <ImageButton
+            android:id="@+id/searchIGDInfo"
+            android:layout_width="50dip"
+            android:layout_height="50dip"
+            android:background="@drawable/search_icon"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"/>
+
         </RelativeLayout>
 
     <Button

@@ -1,19 +1,23 @@
 package softwareinclude.ro.portforwardandroid.GUI;
 
 import android.app.Activity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import softwareinclude.ro.portforwardandroid.R;
+import softwareinclude.ro.portforwardandroid.asyncTasks.ReceiveInfoAsync;
+import softwareinclude.ro.portforwardandroid.network.NetworkUtil;
+import softwareinclude.ro.portforwardandroid.util.ApplicationConstants;
 import softwareinclude.ro.portforwardandroid.util.GlobalData;
-import softwareinclude.ro.portforwardandroid.util.NetworkUtil;
 
 /**
  *
@@ -28,10 +32,13 @@ import softwareinclude.ro.portforwardandroid.util.NetworkUtil;
 public class MainActivity extends Activity implements View.OnClickListener{
 
     private Button addPort;
+    private ImageButton searchIGDInfo;
 
     private TextView networkStateInfo;
     private TextView externalIPInfo;
     private TextView internetGatewayDeviceInfo;
+
+    private BroadcastReceiver broadcastReceiver;
 
 
     @Override
@@ -51,7 +58,27 @@ public class MainActivity extends Activity implements View.OnClickListener{
     public void initData(){
 
         String status = NetworkUtil.getConnectivityStatusString(this);
-        networkStateInfo.setText("Network State: "+ status);
+        if(status != null) {
+            networkStateInfo.setText("Network State: " + status);
+        }
+
+
+        /**
+         * Update info when the broadcast receive data
+         */
+        IntentFilter intentFilter = new IntentFilter(
+                ApplicationConstants.APPLICATION_ENCODING_TEXT);
+        broadcastReceiver = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+
+                networkStateInfo.setText("Network State: "+GlobalData.Data.getNetworkStatus());
+                externalIPInfo.setText(GlobalData.Data.getExternalIP());
+                internetGatewayDeviceInfo.setText(GlobalData.Data.getFriendlyName());
+            }
+        };
+
+        this.registerReceiver(broadcastReceiver, intentFilter);
 
     }
 
@@ -66,6 +93,8 @@ public class MainActivity extends Activity implements View.OnClickListener{
 
         addPort = (Button)findViewById(R.id.addPort);
         addPort.setOnClickListener(this);
+        searchIGDInfo = (ImageButton)findViewById(R.id.searchIGDInfo);
+        searchIGDInfo.setOnClickListener(this);
 
     }
 
@@ -75,8 +104,16 @@ public class MainActivity extends Activity implements View.OnClickListener{
         switch (view.getId()){
 
             case R.id.addPort:{
-                Toast.makeText(getApplicationContext(),"Add Port Text",Toast.LENGTH_SHORT).show();
-                networkStateInfo.setText("Network State: "+GlobalData.Data.getNetworkStatus());
+
+                //Start new activity, user will add input text for each field
+                //Intent startActivity = new Intent(this, AddPortActivity.class);
+                //startActivity(startActivity);
+
+                break;
+            }
+
+            case R.id.searchIGDInfo:{
+                new ReceiveInfoAsync(this).execute();
                 break;
             }
 
@@ -85,5 +122,30 @@ public class MainActivity extends Activity implements View.OnClickListener{
             }
         }
 
+    }
+
+
+    @Override
+    protected void onPause() {
+        // TODO Auto-generated method stub
+        super.onPause();
+        //unregister our receiver
+        this.unregisterReceiver(this.broadcastReceiver);
+    }
+
+    @Override
+    protected void onStop() {
+        // TODO Auto-generated method stub
+        super.onStop();
+        //unregister our receiver
+        this.unregisterReceiver(this.broadcastReceiver);
+    }
+
+    @Override
+    protected void onDestroy() {
+        // TODO Auto-generated method stub
+        super.onDestroy();
+        //unregister our receiver
+        this.unregisterReceiver(this.broadcastReceiver);
     }
 }

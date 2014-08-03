@@ -1,8 +1,10 @@
-package softwareinclude.ro.portforwardandroid.util;
+package softwareinclude.ro.portforwardandroid.network;
 
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+
+import softwareinclude.ro.portforwardandroid.util.ApplicationConstants;
 
 /**
  * Created by Manolescu Sebastian on 8/3/14.

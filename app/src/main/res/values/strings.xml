@@ -4,5 +4,8 @@
     <string name="app_name">Port Forward Android</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="none">none</string>
+    <string name="title_activity_add_port">AddPortActivity</string>
+    <string name="add_port">Add Port</string>
 
 </resources>
