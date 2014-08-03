@@ -5,6 +5,14 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+/**
+ * @author Manolescu Sebastian
+ * @version 1.0.0
+ *
+ * Port Forward Application
+ * Find more on software-include.ro
+ *
+ */
 
 public class MainActivity extends Activity {
 
