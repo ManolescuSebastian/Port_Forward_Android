@@ -4,8 +4,16 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import softwareinclude.ro.portforwardandroid.R;
+import softwareinclude.ro.portforwardandroid.util.GlobalData;
+import softwareinclude.ro.portforwardandroid.util.NetworkUtil;
 
 /**
  *
@@ -17,13 +25,23 @@ import softwareinclude.ro.portforwardandroid.R;
  *
  */
 
-public class MainActivity extends Activity {
+public class MainActivity extends Activity implements View.OnClickListener{
+
+    private Button addPort;
+
+    private TextView networkStateInfo;
+    private TextView externalIPInfo;
+    private TextView internetGatewayDeviceInfo;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        initUI();
         initData();
     }
 
@@ -32,7 +50,8 @@ public class MainActivity extends Activity {
      */
     public void initData(){
 
-
+        String status = NetworkUtil.getConnectivityStatusString(this);
+        networkStateInfo.setText("Network State: "+ status);
 
     }
 
@@ -41,26 +60,30 @@ public class MainActivity extends Activity {
      */
     public void initUI(){
 
+        networkStateInfo = (TextView)findViewById(R.id.network_state_info);
+        externalIPInfo = (TextView)findViewById(R.id.external_ip_info);
+        internetGatewayDeviceInfo = (TextView)findViewById(R.id.igd_name_info);
 
+        addPort = (Button)findViewById(R.id.addPort);
+        addPort.setOnClickListener(this);
 
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
-    }
+    public void onClick(View view) {
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            return true;
+        switch (view.getId()){
+
+            case R.id.addPort:{
+                Toast.makeText(getApplicationContext(),"Add Port Text",Toast.LENGTH_SHORT).show();
+                networkStateInfo.setText("Network State: "+GlobalData.Data.getNetworkStatus());
+                break;
+            }
+
+            default:{
+                break;
+            }
         }
-        return super.onOptionsItemSelected(item);
+
     }
 }
