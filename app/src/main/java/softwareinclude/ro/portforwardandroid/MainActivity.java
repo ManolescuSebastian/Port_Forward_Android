@@ -6,6 +6,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 /**
+ *
  * @author Manolescu Sebastian
  * @version 1.0.0
  *
@@ -20,8 +21,26 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        initData();
     }
 
+    /**
+     * Init Data from this activity
+     */
+    public void initData(){
+
+
+
+    }
+
+    /**
+     * Init UI components for this activity
+     */
+    public void initUI(){
+
+
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
