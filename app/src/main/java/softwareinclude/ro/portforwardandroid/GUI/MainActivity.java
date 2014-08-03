@@ -1,9 +1,11 @@
-package softwareinclude.ro.portforwardandroid;
+package softwareinclude.ro.portforwardandroid.GUI;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import softwareinclude.ro.portforwardandroid.R;
 
 /**
  *
@@ -38,6 +40,7 @@ public class MainActivity extends Activity {
      * Init UI components for this activity
      */
     public void initUI(){
+
 
 
     }
