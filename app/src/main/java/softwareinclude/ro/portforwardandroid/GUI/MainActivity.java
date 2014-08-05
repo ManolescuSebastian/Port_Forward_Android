@@ -75,6 +75,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
                 networkStateInfo.setText("Network State: "+GlobalData.Data.getNetworkStatus());
                 externalIPInfo.setText(GlobalData.Data.getExternalIP());
                 internetGatewayDeviceInfo.setText(GlobalData.Data.getFriendlyName());
+
             }
         };
 
@@ -106,8 +107,10 @@ public class MainActivity extends Activity implements View.OnClickListener{
             case R.id.addPort:{
 
                 //Start new activity, user will add input text for each field
-                //Intent startActivity = new Intent(this, AddPortActivity.class);
-                //startActivity(startActivity);
+                Intent startActivity = new Intent(MainActivity.this, AddPortActivity.class);
+                startActivity(startActivity);
+                this.overridePendingTransition(R.anim.anim_slide_in_left,
+                        R.anim.anim_slide_out_left);
 
                 break;
             }
@@ -121,7 +124,6 @@ public class MainActivity extends Activity implements View.OnClickListener{
                 break;
             }
         }
-
     }
 
 
@@ -129,23 +131,18 @@ public class MainActivity extends Activity implements View.OnClickListener{
     protected void onPause() {
         // TODO Auto-generated method stub
         super.onPause();
-        //unregister our receiver
-        this.unregisterReceiver(this.broadcastReceiver);
+        //this.unregisterReceiver(this.broadcastReceiver);
     }
 
     @Override
     protected void onStop() {
-        // TODO Auto-generated method stub
         super.onStop();
-        //unregister our receiver
-        this.unregisterReceiver(this.broadcastReceiver);
+        //this.unregisterReceiver(this.broadcastReceiver);
     }
 
     @Override
     protected void onDestroy() {
-        // TODO Auto-generated method stub
         super.onDestroy();
-        //unregister our receiver
-        this.unregisterReceiver(this.broadcastReceiver);
+        //this.unregisterReceiver(this.broadcastReceiver);
     }
 }

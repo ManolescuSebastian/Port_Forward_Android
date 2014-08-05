@@ -2,35 +2,61 @@ package softwareinclude.ro.portforwardandroid.GUI;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.Button;
+
 import softwareinclude.ro.portforwardandroid.R;
 
-public class AddPortActivity extends Activity {
+public class AddPortActivity extends Activity implements View.OnClickListener{
+
+
+    private Button backTitlebar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_add_port);
+
+        initData();
+        initUI();
+    }
+
+
+    private void initData () {
+
+
+    }
+
+
+    private void initUI() {
+
+        backTitlebar = (Button) findViewById(R.id.addPortBackBtn);
+        backTitlebar.setOnClickListener(this);
+
     }
 
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.add_port, menu);
-        return true;
-    }
+    public void onClick(View view) {
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            return true;
+        switch (view.getId()) {
+
+            case R.id.addPortBackBtn:{
+                this.finish();
+                this.overridePendingTransition(R.anim.anim_slide_in_right,
+                        R.anim.anim_slide_out_right);
+
+                break;
+            }
+
+            default: {
+                break;
+            }
         }
-        return super.onOptionsItemSelected(item);
+
     }
 }

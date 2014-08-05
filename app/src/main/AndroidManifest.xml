@@ -23,6 +23,7 @@
             </intent-filter>
         </activity>
 
+        <!--
         <receiver
             android:name=".broadcastStatus.NetworkStatus"
             android:label="NetworkStatus" >
@@ -31,6 +32,7 @@
                 <action android:name="android.net.wifi.WIFI_STATE_CHANGED" />
             </intent-filter>
         </receiver>
+        -->
 
         <activity
             android:name=".GUI.AddPortActivity"
