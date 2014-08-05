@@ -73,8 +73,8 @@ public class MainActivity extends Activity implements View.OnClickListener{
             public void onReceive(Context context, Intent intent) {
 
                 networkStateInfo.setText("Network State: "+GlobalData.Data.getNetworkStatus());
-                externalIPInfo.setText(GlobalData.Data.getExternalIP());
-                internetGatewayDeviceInfo.setText(GlobalData.Data.getFriendlyName());
+                externalIPInfo.setText("External IP: "+GlobalData.Data.getExternalIP());
+                internetGatewayDeviceInfo.setText("Friendly Name: "+GlobalData.Data.getFriendlyName());
 
             }
         };

@@ -10,6 +10,7 @@ import net.sbbi.upnp.messages.UPNPResponseException;
 import java.io.IOException;
 
 import softwareinclude.ro.portforwardandroid.dialog.CustomDialogAddPort;
+import softwareinclude.ro.portforwardandroid.network.NetworkUtil;
 import softwareinclude.ro.portforwardandroid.network.UPnPPortMapper;
 import softwareinclude.ro.portforwardandroid.util.ApplicationConstants;
 import softwareinclude.ro.portforwardandroid.util.GlobalData;
@@ -38,13 +39,17 @@ public class ReceiveInfoAsync extends AsyncTask<Void, Void, Void> {
         @Override
         protected Void doInBackground(Void... params) {
             try {
+               String status = NetworkUtil.getConnectivityStatusString(context);
                String externalIP = uPnPPortMapper.findExternalIPAddress();
                String friendlyName = uPnPPortMapper.findRouterName();
-                if(externalIP != null) {
-                    GlobalData.Data.setExternalIP("External IP: "+ externalIP);
+                if(externalIP != null && !externalIP.isEmpty()) {
+                    GlobalData.Data.setExternalIP(externalIP);
                 }
-                if(friendlyName != null){
-                    GlobalData.Data.setFriendlyName("Friendly Name: "+ friendlyName);
+                if(friendlyName != null && !friendlyName.isEmpty()){
+                    GlobalData.Data.setFriendlyName(friendlyName);
+                }
+                if(status != null && !status.isEmpty()){
+                    GlobalData.Data.setNetworkStatus(status);
                 }
             } catch (IOException e) {
                 e.printStackTrace();

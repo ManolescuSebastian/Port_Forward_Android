@@ -1,11 +1,58 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
 
     <include layout="@layout/add_port_titlebar"/>
 
+    <EditText
+        android:id="@+id/inputExternalIP"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dip"
+        android:editable="false"
+        android:enabled="false"
+        android:singleLine="true"
+        android:hint="External Internet Protocol"/>
 
 
-</RelativeLayout>
+    <EditText
+        android:id="@+id/inputExternalPort"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dip"
+        android:singleLine="true"
+        android:hint="External Port"/>
+
+
+    <EditText
+        android:id="@+id/inputInternalIP"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dip"
+        android:singleLine="true"
+        android:hint="Internal Internet Protocol"/>
+
+
+    <EditText
+        android:id="@+id/inputInternalPort"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dip"
+        android:singleLine="true"
+        android:hint="Internal Port"/>
+
+
+    <Button
+        android:id="@+id/doneAddPort"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dip"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/button_selector"
+        android:text="Done"/>
+
+
+</LinearLayout>
