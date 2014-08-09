@@ -9,3 +9,4 @@ For any questions please access http://software-include.ro website and use the c
 Application screenshot:
 
 ![alt tag](https://github.com/ManolescuSebastian/Port_Forward_Android/blob/master/screenshots/main__app_activity.png)
+![alt tag](https://github.com/ManolescuSebastian/Port_Forward_Android/blob/master/screenshots/search_progress_bar_main.png)
