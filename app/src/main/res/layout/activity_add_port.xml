@@ -24,6 +24,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="10dip"
         android:singleLine="true"
+        android:inputType="number"
         android:hint="External Port"/>
 
 
@@ -57,6 +58,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="10dip"
         android:singleLine="true"
+        android:inputType="number"
         android:hint="Internal Port"/>
 
 

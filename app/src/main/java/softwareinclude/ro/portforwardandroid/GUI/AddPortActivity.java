@@ -16,6 +16,7 @@ import java.net.SocketException;
 import java.util.Enumeration;
 
 import softwareinclude.ro.portforwardandroid.R;
+import softwareinclude.ro.portforwardandroid.asyncTasks.AddPortAsync;
 import softwareinclude.ro.portforwardandroid.util.GlobalData;
 
 public class AddPortActivity extends Activity implements View.OnClickListener{
@@ -85,9 +86,11 @@ public class AddPortActivity extends Activity implements View.OnClickListener{
             }
 
             case R.id.doneAddPort: {
+                    //Open Port Using AsyncTask and UPnPPortMapper class
+                    new AddPortAsync(this,inputExternalIP.getText().toString(),inputInternalIP.getText().toString(),
+                                     Integer.parseInt(inputExternalPort.getText().toString()),Integer.parseInt(inputInternalPort.getText().toString())).execute();
 
-                    finishActivity();
-
+                    //finishActivity();
                 break;
             }
 
