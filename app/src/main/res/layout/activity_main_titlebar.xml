@@ -3,7 +3,19 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/LightBlue">
+    android:background="@color/BlueOcean">
+
+    <Button
+        android:id="@+id/mainHelpButton"
+        android:layout_width="wrap_content"
+        android:layout_height="40dip"
+        android:text="Help"
+        android:layout_margin="5dip"
+        android:background="@drawable/title_button_selector"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        />
+
 
     <TextView
         android:layout_width="wrap_content"

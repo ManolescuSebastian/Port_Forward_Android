@@ -27,14 +27,29 @@
         android:hint="External Port"/>
 
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dip"
+        android:orientation="horizontal">
+
     <EditText
         android:id="@+id/inputInternalIP"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dip"
         android:singleLine="true"
+        android:layout_weight="0.8"
         android:hint="Internal Internet Protocol"/>
 
+
+        <Button
+        android:id="@+id/searchDeviceInternalIP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.2"
+        android:background="@drawable/internal_ip_icon"/>
+
+    </LinearLayout>
 
     <EditText
         android:id="@+id/inputInternalPort"
@@ -49,10 +64,16 @@
         android:id="@+id/doneAddPort"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="10dip"
+        android:layout_margin="5dip"
         android:layout_gravity="center_horizontal"
         android:background="@drawable/button_selector"
-        android:text="Done"/>
+        android:text="Open Port"/>
 
-
+<!--
+    <ImageView
+        android:layout_width="180dip"
+        android:layout_height="170dip"
+        android:background="@drawable/wireless_background_icon"
+        android:layout_gravity="center"/>
+-->
 </LinearLayout>

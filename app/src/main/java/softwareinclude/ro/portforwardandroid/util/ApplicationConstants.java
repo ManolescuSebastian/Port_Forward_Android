@@ -14,5 +14,6 @@ public class ApplicationConstants {
     public static final int SCAN_TIMEOUT = 5000;
     public static final String TCP_PROTOCOL = "TCP";
     public static final String UDP_PROTOCOL = "UDP";
+    public static final String ADD_PORT_DESCRIPTION = "OPEN PORT ON IGD USING UNPN";
 
 }

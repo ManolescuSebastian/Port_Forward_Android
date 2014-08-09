@@ -32,6 +32,7 @@ import softwareinclude.ro.portforwardandroid.util.GlobalData;
 public class MainActivity extends Activity implements View.OnClickListener{
 
     private Button addPort;
+    private Button helpButton;
     private ImageButton searchIGDInfo;
 
     private TextView networkStateInfo;
@@ -96,6 +97,8 @@ public class MainActivity extends Activity implements View.OnClickListener{
         addPort.setOnClickListener(this);
         searchIGDInfo = (ImageButton)findViewById(R.id.searchIGDInfo);
         searchIGDInfo.setOnClickListener(this);
+        helpButton = (Button)findViewById(R.id.mainHelpButton);
+        helpButton.setOnClickListener(this);
 
     }
 
@@ -116,7 +119,22 @@ public class MainActivity extends Activity implements View.OnClickListener{
             }
 
             case R.id.searchIGDInfo:{
-                new ReceiveInfoAsync(this).execute();
+                //if wi-fi enabled search external IP and friendly name else show info message for user
+                String networkStatus = NetworkUtil.getConnectivityStatusString(this);
+
+                if(networkStatus.equals("Wifi enabled")){
+                    new ReceiveInfoAsync(this).execute();
+                }else{
+                    networkStateInfo.setText("Network State: Please Enable Wi-Fi");
+                    externalIPInfo.setText("External IP: -");
+                    internetGatewayDeviceInfo.setText("Friendly Name: -");
+                }
+
+                break;
+            }
+
+            case R.id.mainHelpButton: {
+
                 break;
             }
 

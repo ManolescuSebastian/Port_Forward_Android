@@ -2,11 +2,18 @@ package softwareinclude.ro.portforwardandroid.GUI;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+
+import java.net.Inet4Address;
+import java.net.InetAddress;
+import java.net.NetworkInterface;
+import java.net.SocketException;
+import java.util.Enumeration;
 
 import softwareinclude.ro.portforwardandroid.R;
 import softwareinclude.ro.portforwardandroid.util.GlobalData;
@@ -20,7 +27,7 @@ public class AddPortActivity extends Activity implements View.OnClickListener{
 
     private Button backTitlebar;
     private Button doneAddPort;
-
+    private Button searchDeviceInternalIP;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +49,8 @@ public class AddPortActivity extends Activity implements View.OnClickListener{
         backTitlebar.setOnClickListener(this);
         doneAddPort = (Button) findViewById(R.id.doneAddPort);
         doneAddPort.setOnClickListener(this);
+        searchDeviceInternalIP = (Button)findViewById(R.id.searchDeviceInternalIP);
+        searchDeviceInternalIP.setOnClickListener(this);
 
         inputExternalIP = (EditText) findViewById(R.id.inputExternalIP);
         inputExternalPort = (EditText) findViewById(R.id.inputExternalPort);
@@ -72,7 +81,6 @@ public class AddPortActivity extends Activity implements View.OnClickListener{
             case R.id.addPortBackBtn: {
 
                     finishActivity();
-
                 break;
             }
 
@@ -83,10 +91,62 @@ public class AddPortActivity extends Activity implements View.OnClickListener{
                 break;
             }
 
+            case R.id.searchDeviceInternalIP: {
+                //search device IP and using the methods below
+                String foundDeviceInternalIP = getDottedDecimalIP(getLocalIPAddress());
+                inputInternalIP.setText(foundDeviceInternalIP);
+
+                break;
+            }
+
             default: {
                 break;
             }
         }
 
     }
+
+    /**
+     *
+     * @return
+     */
+    private byte[] getLocalIPAddress() {
+        try {
+            for (Enumeration<NetworkInterface> en = NetworkInterface.getNetworkInterfaces(); en.hasMoreElements();) {
+                NetworkInterface intf = en.nextElement();
+                for (Enumeration<InetAddress> enumIpAddr = intf.getInetAddresses(); enumIpAddr.hasMoreElements();) {
+                    InetAddress inetAddress = enumIpAddr.nextElement();
+                    if (!inetAddress.isLoopbackAddress()) {
+                        if (inetAddress instanceof Inet4Address) { // fix for Galaxy Nexus. IPv4 is easy to use :-)
+                            return inetAddress.getAddress();
+                        }
+                        //return inetAddress.getHostAddress().toString(); // Galaxy Nexus returns IPv6
+                    }
+                }
+            }
+        } catch (SocketException ex) {
+            Log.e("AndroidNetworkAddressFactory", "getLocalIPAddress()", ex);
+        } catch (NullPointerException ex) {
+            Log.e("AndroidNetworkAddressFactory", "getLocalIPAddress()", ex);
+        }
+        return null;
+    }
+
+    /**
+     *
+     * @param ipAddr
+     * @return
+     */
+    private String getDottedDecimalIP(byte[] ipAddr) {
+        //convert to dotted decimal notation:
+        String ipAddrStr = "";
+        for (int i=0; i<ipAddr.length; i++) {
+            if (i > 0) {
+                ipAddrStr += ".";
+            }
+            ipAddrStr += ipAddr[i]&0xFF;
+        }
+        return ipAddrStr;
+    }
+
 }

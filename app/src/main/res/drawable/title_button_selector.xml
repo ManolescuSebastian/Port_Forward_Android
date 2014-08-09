@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- When selected, use grey -->
+    <item android:drawable="@drawable/title_button_corers_selected"
+        android:state_pressed="true"
+        />
+    <!-- When not selected, use white-->
+    <item android:drawable="@drawable/title_button_corners"
+        android:state_pressed="false"/>
+
+</selector>

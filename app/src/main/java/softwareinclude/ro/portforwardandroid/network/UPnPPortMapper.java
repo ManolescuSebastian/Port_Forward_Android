@@ -45,14 +45,12 @@ public class UPnPPortMapper {
         return "No IGD Name Found";
     }
 
-
-
     /**
      * Open Router Port
      * IGD == Internet Gateway Device
      *
-     * @param internalGatewayIP
-     * @param internalGatewayPort
+     * @param internalIP
+     * @param internalPort
      * @param externalRouterIP
      * @param externalRouterPort
      * @param description
@@ -60,8 +58,8 @@ public class UPnPPortMapper {
      * @throws IOException
      * @throws UPNPResponseException
      */
-    public boolean openRouterPort(String internalGatewayIP,int internalGatewayPort,
-                                  String externalRouterIP,int externalRouterPort,
+    public boolean openRouterPort(String externalRouterIP,int externalRouterPort,
+                                  String internalIP,int internalPort,
                                   String description)
                                   throws IOException, UPNPResponseException {
 
@@ -74,8 +72,8 @@ public class UPnPPortMapper {
             for (InternetGatewayDevice addIGD : internetGatewayDevices) {
                 /** Open port for TCP protocol and also for UDP protocol
                  *  Both protocols must be open - this is a MUST*/
-                addIGD.addPortMapping(description, externalRouterIP, internalGatewayPort, externalRouterPort, internalGatewayIP, 0, ApplicationConstants.TCP_PROTOCOL);
-                addIGD.addPortMapping(description, externalRouterIP, internalGatewayPort, externalRouterPort, internalGatewayIP, 0, ApplicationConstants.UDP_PROTOCOL);
+                addIGD.addPortMapping(description, externalRouterIP, internalPort, externalRouterPort, internalIP, 0, ApplicationConstants.TCP_PROTOCOL);
+                addIGD.addPortMapping(description, externalRouterIP, internalPort, externalRouterPort, internalIP, 0, ApplicationConstants.UDP_PROTOCOL);
             }
             return true;
         }else{
