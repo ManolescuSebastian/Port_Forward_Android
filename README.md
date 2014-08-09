@@ -6,4 +6,6 @@ First step in opening a port on a IGD si to enable the UPNP option, for this you
 
 For any questions please access http://software-include.ro website and use the contact section.
 
-Application development in progress.
+Application screenshot:
+
+![alt tag](https://github.com/ManolescuSebastian/Port_Forward_Android/blob/master/screenshots/main__app_activity.png)
