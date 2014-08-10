@@ -11,7 +11,7 @@ Application screenshot:
 <img alt="Main Application Get External IP and IGD Friendly Name" src="https://github.com/ManolescuSebastian/Port_Forward_Android/blob/master/screenshots/search_progress_bar_main.png" height="400px"/>&nbsp;&nbsp;&nbsp;
 <img alt="Add Port Activity" src="https://github.com/ManolescuSebastian/Port_Forward_Android/blob/master/screenshots/add_port_activity.png" height="400px"/></center>
 
-For own implementation use upnplib-mobile.jar library.
+For own implementation use **upnplib-mobile.jar** library.
 
 First the IGD (Internet Gateway Device **Router**) using the following line of code.
 `InternetGatewayDevice[] internetGatewayDevices = InternetGatewayDevice.getDevices(5000);`
