@@ -7,8 +7,8 @@ First step in opening a port on a IGD si to enable the UPNP option, for this you
 
 Application screenshot:
 
-<img alt="Main Application Activity" src="https://github.com/ManolescuSebastian/Port_Forward_Android/blob/master/screenshots/main__app_activity.png" height="400px" /> 
-<img alt="Main Application Get External IP and IGD Friendly Name" src="https://github.com/ManolescuSebastian/Port_Forward_Android/blob/master/screenshots/search_progress_bar_main.png" height="400px"/>
+<img alt="Main Application Activity" src="https://github.com/ManolescuSebastian/Port_Forward_Android/blob/master/screenshots/main__app_activity.png" height="400px" />&nbsp;&nbsp;
+<img alt="Main Application Get External IP and IGD Friendly Name" src="https://github.com/ManolescuSebastian/Port_Forward_Android/blob/master/screenshots/search_progress_bar_main.png" height="400px"/>&nbsp;&nbsp;
 <img alt="Add Port Activity" src="https://github.com/ManolescuSebastian/Port_Forward_Android/blob/master/screenshots/add_port_activity.png" height="400px"/>
 
 For own implementation use upnplib-mobile.jar library.
