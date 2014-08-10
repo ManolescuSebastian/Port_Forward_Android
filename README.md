@@ -18,11 +18,16 @@ First the IGD (Internet Gateway Device **Router**) using the following line of c
 
 If the `internetGatewayDevices` array is  > 1 get the first element and use the following methods.
 
-`addIGD.addPortMapping(description, externalRouterIP, internalPort, externalRouterPort, internalIP, 0, "TCP");`
-
-`addIGD.addPortMapping(description, externalRouterIP, internalPort, externalRouterPort, internalIP, 0, "UDP");`
+`firstIGDEmelent.addPortMapping(description, externalRouterIP, internalPort, externalRouterPort, internalIP, 0, "TCP");`
+                `firstIGDElement.addPortMapping(description, externalRouterIP, internalPort, externalRouterPort, internalIP, 0, "UDP");`
 
 Both protocols (TPC & UDP) are required.
+
+This library also has the remove implementation with the following methods.
+
+`firstIGDEmelent.deletePortMapping(externalIP, port, "TCP");`
+                `firstIGDEmelent.deletePortMapping(externalIP, port, "UDP");`
+
 
 
 For any questions please access http://software-include.ro website and use the contact section.
