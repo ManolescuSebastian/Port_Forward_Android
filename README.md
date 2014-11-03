@@ -29,9 +29,5 @@ This library also has the remove implementation with the following methods.
     firstIGDEmelent.deletePortMapping(externalIP, port, "UDP");
 
 
-
-For any questions please access http://software-include.ro website and use the contact section.
-
-
 Application developement in progress.
 
